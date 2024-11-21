@@ -53,10 +53,20 @@ with tab1:
     st.plotly_chart(fig)
 
 with tab2:
-    # year_input = st.slider('Year', min_value=1800, max_value=2023, value=2000)
-    fig2 = top_names_plot(data, year=year_input, n=n_names)
+   fig2 = top_names_plot(data, year=year_input, n=n_names)
     st.plotly_chart(fig2)
 
     st.write('Unique Names Table')
-    output_table = unique_names_summary(data, 2000)
+    output_table = unique_names_summary(data, year_input)
     st.data_editor(output_table)
+
+    # Create a downloadable CSV file
+    csv_data = output_table.to_csv(index=False)
+    
+    # Add a download button
+    st.download_button(
+        label="Download Unique Names Data as CSV",
+        data=csv_data,
+        file_name=f'unique_names_{year_input}.csv',
+        mime='text/csv'
+    )
