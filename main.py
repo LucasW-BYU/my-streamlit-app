@@ -44,7 +44,7 @@ with st.sidebar:
     year_input = st.slider('Year', min_value=1800, max_value=2023, value=2000)
     n_names = st.radio('Number of names per sex', [3, 5, 10])
 
-tab1, tab2 = st.tabs(['Names', 'Year'])
+tab1, tab2, tab3 = st.tabs(['Names', 'Year','one-click Wonders'])
 
 with tab1:
     # input_name = st.text_input('Enter a name:', 'Mary')
