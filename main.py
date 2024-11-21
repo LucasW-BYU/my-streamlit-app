@@ -46,6 +46,10 @@ with st.sidebar:
 
 tab1, tab2 = st.tabs(['Names', 'Year'])
 
+decade = st.selectbox(
+        "Select a Decade:",
+        options=["1880s", "1890s", "1900s", "1910s", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"]
+    )
 with tab1:
     # input_name = st.text_input('Enter a name:', 'Mary')
     name_data = data[data['name']==input_name].copy()
