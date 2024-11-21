@@ -70,6 +70,30 @@ with tab2:
         file_name=f'unique_names_{year_input}.csv',
         mime='text/csv'
     )
+
+    # Gender Popularity Over Time
+st.subheader("Gender Popularity Over Time")
+
+# Input for Year Range
+year_range = st.slider('Select a year range:', min_value=1880, max_value=2023, value=(1950, 2000))
+
+# Filter the dataset based on the year range
+gender_trend_data = data[(data['year'] >= year_range[0]) & (data['year'] <= year_range[1])]
+
+# Group by year and sex, and sum the counts
+gender_trend = gender_trend_data.groupby(['year', 'sex'])['count'].sum().reset_index()
+
+# Create the line chart
+gender_fig = px.line(
+    gender_trend,
+    x='year',
+    y='count',
+    color='sex',
+    title=f"Gender Popularity from {year_range[0]} to {year_range[1]}",
+    labels={'count': 'Count of Names', 'year': 'Year', 'sex': 'Gender'}
+)
+st.plotly_chart(gender_fig)
+
 with tab3:
     st.write("One-Hit Wonders Analysis")
 
