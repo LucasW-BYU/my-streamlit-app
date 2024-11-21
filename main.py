@@ -53,7 +53,7 @@ with tab1:
     st.plotly_chart(fig)
 
 with tab2:
-   fig2 = top_names_plot(data, year=year_input, n=n_names)
+    fig2 = top_names_plot(data, year=year_input, n=n_names)
     st.plotly_chart(fig2)
 
     st.write('Unique Names Table')
