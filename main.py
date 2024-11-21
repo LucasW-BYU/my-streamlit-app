@@ -70,3 +70,14 @@ with tab2:
         file_name=f'unique_names_{year_input}.csv',
         mime='text/csv'
     )
+with tab3:
+    st.write("One-Hit Wonders Analysis")
+
+    selected_year = st.slider('Select a year for One-Hit Wonders', min_value=1880, max_value=2023, value=2000)
+    ohw_year_data = ohw_data[ohw_data['year'] == selected_year]
+
+    if not ohw_year_data.empty:
+        st.write(f"One-Hit Wonders in {selected_year}")
+        st.dataframe(ohw_year_data[['name', 'sex', 'count']].sort_values('count', ascending=False))
+    else:
+        st.write(f"No one-hit wonders found for {selected_year}.")
